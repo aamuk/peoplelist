@@ -1,22 +1,23 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import muppet from '/public/sam.png';
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const NotFound = () => {
+  const router = useRouter()
 
-    return (
-        <div className="not-found">
-            <Image
-                src={muppet}
-                alt="muppet"
-                width="350px"
-                height="300px"
-            />
-            <h1>LOL U MUPPET</h1>
-            <h2>Page not found.</h2>
-            <p>Go back to <Link href="/"><a>home page</a></Link></p>
-        </div>
-    );
+  useEffect(() => {
+    setTimeout(() => {
+      router.push('/')
+    }, 3000)
+  }, [])
+
+  return (
+    <div className="not-found">
+      <h1>Ooops...</h1>
+      <h2>That page cannot be found</h2>
+      <p>Going back to the <Link href="/"><a>Homepage</a></Link> in 3 seconds...</p>
+    </div>
+  );
 }
  
 export default NotFound;
